@@ -1,4 +1,5 @@
 # get banners
 GET http://localhost:5000/banners HTTP/1.1
 
-#####
+##### get banner
+GET http://localhost:3000/offers/offer1.jpg HTTP/1.1

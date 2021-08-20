@@ -6,7 +6,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "start:server": "canned -p 5000 ./api/server"
+    "start:server": "canned -p 5000 ./server"
   },
   "dependencies": {
     "canned": "^0.3.13",
