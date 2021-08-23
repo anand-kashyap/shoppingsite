@@ -10,6 +10,7 @@ html, body {
   box-sizing: border-box;
 }
 body{
+  letter-spacing: -0.5px;
   font-size: 16px;
   font-family: 'Roboto', sans-serif;
 }
@@ -27,6 +28,11 @@ img {
   height: auto;
 }
 
+a{
+  text-decoration: none;
+  color: black;
+}
+
 .container{
   @media (min-width: 992px) {
     padding: 0 5%;
@@ -39,9 +45,8 @@ img {
 `;
 
 const theme = {
-  colors: {
-    primary: '#0070f3',
-  },
+  primary: '#d10157',
+  secondary: '#eeeeee',
 };
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -50,7 +55,9 @@ export default function App({ Component, pageProps }: AppProps) {
       <GlobalStyle />
       <ThemeProvider theme={theme}>
         <Header />
-        <Component {...pageProps} />
+        <main className='container'>
+          <Component {...pageProps} />
+        </main>
         <Footer />
       </ThemeProvider>
     </>

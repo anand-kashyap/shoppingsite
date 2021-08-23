@@ -1,9 +1,11 @@
 import Head from 'next/head';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import logo from 'public/logo.png';
 import styled from 'styled-components';
 import { capitalizeTitle } from 'utils';
+import Cart from './Cart';
 
 const StyledHeader = styled.header`
   margin-top: 0.5rem;
@@ -37,26 +39,15 @@ const UserActions = styled.div`
 
   ul {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1em;
+  }
+  ul > li:first-child {
+    grid-column-start: 3;
   }
   ul > li {
     font-size: small;
     font-weight: bold;
-  }
-  .cart {
-    font-size: 0.95rem;
-    grid-column: 1 / span 2;
-    display: flex;
-    align-items: center;
-    background-color: #e6e6e6;
-    padding: 5px 10px;
-    border-radius: 2px;
-  }
-  .cart > p {
-    margin: 0;
-  }
-  .cart-img {
-    width: 25px;
   }
 `;
 
@@ -71,7 +62,11 @@ const Header = () => {
         <title>Sabka Bazaar{capitalizeTitle(pathname, '|')}</title>
       </Head>
       <div className='logo'>
-        <Image src={logo} alt='Sabka Bazaar Logo' />
+        <Link href='/'>
+          <a>
+            <Image src={logo} alt='Sabka Bazaar Logo' />
+          </a>
+        </Link>
       </div>
       <nav>
         <ul>
@@ -81,15 +76,14 @@ const Header = () => {
       </nav>
       <UserActions>
         <ul>
-          <li>SignIn</li>
-          <li>Register</li>
+          <li>
+            <Link href='/login'>SignIn</Link>
+          </li>
+          <li>
+            <Link href='/register'>Register</Link>
+          </li>
         </ul>
-        <div className='cart'>
-          <div className='cart-img'>
-            <img src='/cart.svg' alt='Shopping Cart' />
-          </div>
-          <p>0 Items</p>
-        </div>
+        <Cart />
       </UserActions>
     </StyledHeader>
   );
