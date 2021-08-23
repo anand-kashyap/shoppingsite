@@ -9,6 +9,7 @@
     "start:server": "canned -p 5000 ./server"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "canned": "^0.3.13",
     "next": "latest",
     "react": "^17.0.2",

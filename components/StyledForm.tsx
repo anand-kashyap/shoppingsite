@@ -1,10 +1,17 @@
 import styled from 'styled-components';
 
-const StyledButton = styled.button`
-  width: 100%;
+interface IButton {
+  small?: boolean;
+  width?: string;
+}
+
+const StyledButton = styled.button.attrs<IButton>(({ small = false }) => ({
+  width: small ? 'initial' : '100%',
+}))<IButton>`
+  width: ${props => props.width};
   border: none;
   margin-top: 20px;
-  padding: 15px 0;
+  padding: 15px ${props => (props.small ? '15px' : 0)};
   color: white;
   background-color: ${props => props.theme.primary};
   border-radius: 2px;
