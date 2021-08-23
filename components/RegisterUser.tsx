@@ -1,30 +1,17 @@
-import styled from 'styled-components';
+import { useRouter } from 'next/router';
+import { FormEvent } from 'react';
+import { StyledButton, StyledForm } from './StyledForm';
 import Input from './StyledInput';
 
-const StyledButton = styled.button`
-  width: 100%;
-  border: none;
-  margin-top: 20px;
-  padding: 15px 0;
-  color: white;
-  background-color: ${props => props.theme.primary};
-  border-radius: 2px;
-`;
-
-const StyledForm = styled.form`
-  width: 100%;
-  @media (min-width: 992px) {
-    width: 90%;
-  }
-
-  @media (min-width: 1200px) {
-    width: 80%;
-  }
-`;
-
 const RegisterUser = () => {
+  const { push } = useRouter();
+  const submitForm = (e: FormEvent<HTMLElement>) => {
+    e.preventDefault();
+    push('/login');
+  };
+
   return (
-    <StyledForm>
+    <StyledForm onSubmit={submitForm}>
       <Input name='First Name' />
       <Input name='Last Name' />
       <Input name='Email' type='email' />
