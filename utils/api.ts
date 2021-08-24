@@ -4,4 +4,6 @@ axios.defaults.baseURL = 'http://localhost:5000';
 
 const getCategories = () => axios.get('/categories');
 
-export { getCategories };
+const getBanners = () => axios.get('/banners');
+
+export { getCategories, getBanners };
