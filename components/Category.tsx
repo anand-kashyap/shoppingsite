@@ -1,4 +1,5 @@
 import { StyledButton } from 'components/StyledForm';
+import Link from 'next/link';
 import styled from 'styled-components';
 import { ICategory } from 'types';
 
@@ -21,7 +22,10 @@ const StyledCategory = styled.div.attrs<ICat>(props => ({
     display: block;
     position: absolute;
     bottom: -1rem;
-    background: ${props => (!props.last ? 'radial-gradient(farthest-corner at 50% 0px, grey 0%, transparent 50%)' : 'none')};
+    background: ${props =>
+      !props.last
+        ? 'radial-gradient(farthest-corner at 50% 0px, grey 0%, transparent 50%)'
+        : 'none'};
     width: 100%;
     height: 1rem;
   }
@@ -31,7 +35,7 @@ const StyledCategory = styled.div.attrs<ICat>(props => ({
   }
 `;
 
-interface EICategory extends Omit<ICategory, 'key' | 'id'> {
+interface EICategory extends Omit<ICategory, 'key'> {
   keyname: string;
   even: boolean;
   last: boolean;
@@ -53,7 +57,9 @@ const Category = (cat: EICategory) => {
       <StyledCatDetails>
         <h2>{cat.name}</h2>
         <p>{cat.description}</p>
-        <StyledButton small>{'Explore ' + cat.keyname}</StyledButton>
+        <Link href={`/products?category=${cat.id}`}>
+          <StyledButton small>{'Explore ' + cat.keyname}</StyledButton>
+        </Link>
       </StyledCatDetails>
     </StyledCategory>
   );

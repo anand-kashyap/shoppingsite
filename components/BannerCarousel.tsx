@@ -38,6 +38,7 @@ const StyledArrow = styled.button.attrs<IArrow>(({ prev = false }) => ({
   prev,
   type: 'button',
 }))<IArrow>`
+  display: none;
   ${props => (props.prev ? 'left: 0;' : 'right: 0;')}
   background: rgba(0,0,0,0.3);
   top: 40%;
@@ -49,6 +50,9 @@ const StyledArrow = styled.button.attrs<IArrow>(({ prev = false }) => ({
   z-index: 2;
   border: none;
   cursor: pointer;
+  @media (min-width: 992px) {
+    display: block;
+  }
 `;
 
 const BannerCarousel = () => {
@@ -61,7 +65,7 @@ const BannerCarousel = () => {
   return (
     <StyledCarousel>
       <Carousel
-        autoPlay={false}
+        autoPlay
         infiniteLoop
         showThumbs={false}
         showStatus={false}

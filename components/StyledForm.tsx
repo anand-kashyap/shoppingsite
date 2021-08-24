@@ -10,6 +10,7 @@ const StyledButton = styled.button.attrs<IButton>(({ small = false }) => ({
 }))<IButton>`
   width: ${props => props.width};
   border: none;
+  cursor: pointer;
   margin-top: 20px;
   padding: 15px ${props => (props.small ? '15px' : 0)};
   color: white;
