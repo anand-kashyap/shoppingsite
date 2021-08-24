@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { ICategory, IProduct } from 'types';
 
-axios.defaults.baseURL = 'http://localhost:5000';
+axios.defaults.baseURL = process.env.NEXT_PUBLIC_API || 'http://localhost:5000';
 
 const getCategories = () =>
   axios.get('/categories').then(d =>
