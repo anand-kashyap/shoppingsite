@@ -27,9 +27,11 @@ const CartModal = () => {
       <CartHeader>
         <div className='heading'>
           <p>My Cart </p>
-          <span>
-            ({totalQty} Item{totalQty > 1 ? 's' : ''})
-          </span>
+          {totalQty > 0 && (
+            <span>
+              ({totalQty} Item{totalQty > 1 ? 's' : ''})
+            </span>
+          )}
         </div>
         <button
           type='button'
@@ -45,18 +47,31 @@ const CartModal = () => {
         {items.map(item => (
           <CartItem key={item.id} item={item} />
         ))}
-        <div className='min-banner'>
-          <div className='banner-img'>
-            <img src='/lowest-price.png' alt='lowest price' width='100' />
+        {totalQty > 0 && (
+          <div className='min-banner'>
+            <div className='banner-img'>
+              <img src='/lowest-price.png' alt='lowest price' width='100' />
+            </div>
+            <p>You wont find it cheaper anywhere</p>
           </div>
-          <p>You wont find it cheaper anywhere</p>
-        </div>
+        )}
       </CardBody>
       <CardFooter>
-        <p className='note'>Promo code can be applied on Payment Page</p>
-        <StyledButton onClick={() => dispatch(closeCart())}>
-          <span>Proceed to Checkout</span>
-          <span>{'Rs.' + getTotalAmt(items) + ' >'}</span>
+        {totalQty > 0 && (
+          <p className='note'>Promo code can be applied on Payment Page</p>
+        )}
+        <StyledButton
+          onClick={() => dispatch(closeCart())}
+          style={{ display: 'block' }}
+        >
+          {totalQty > 0 ? (
+            <>
+              <span>Proceed to Checkout</span>
+              <span>{'Rs.' + getTotalAmt(items) + ' >'}</span>
+            </>
+          ) : (
+            <span>Start Shopping</span>
+          )}
         </StyledButton>
       </CardFooter>
     </StyledCartModal>

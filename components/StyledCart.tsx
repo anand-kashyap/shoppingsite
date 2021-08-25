@@ -35,6 +35,7 @@ const CardBody = styled.div`
   flex-grow: 1;
   background-color: ${props => props.theme.secondary};
   border-bottom: 1px solid #c0c0c0;
+  overflow-y: auto;
 `;
 const CardFooter = styled.div`
   padding: 10px;
@@ -56,16 +57,16 @@ const StyledCartModal = styled.div`
   position: absolute;
   bottom: 0;
   right: 10%;
-  top: 12%;
+  top: 11%;
   z-index: 2;
   display: flex;
   flex-direction: column;
+  min-width: 25vw;
   .min-banner {
     background-color: white;
     border-radius: 2px;
     padding: 5px 10px;
-    margin: 0 10px;
-    margin-top: 10px;
+    margin: 10px 2%;
     display: flex;
     font-size: 0.8rem;
     column-gap: 1rem;
