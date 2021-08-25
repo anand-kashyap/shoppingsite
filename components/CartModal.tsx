@@ -2,6 +2,7 @@ import { closeCart } from 'app/cartSlice';
 import { RootState } from 'app/store';
 import { MouseEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { ICartProduct } from 'types';
 import CartItem from './CartItem';
 import {
   CardBody,
@@ -11,16 +12,24 @@ import {
 } from './StyledCart';
 import { StyledButton } from './StyledForm';
 
+const getTotalAmt = (items: ICartProduct[]) =>
+  items.reduce((acc, item) => {
+    acc += item.price * item.qty;
+    return acc;
+  }, 0);
+
 const CartModal = () => {
   const dispatch = useDispatch();
-  const { items } = useSelector((state: RootState) => state.cart);
+  const { items, totalQty } = useSelector((state: RootState) => state.cart);
 
   return (
     <StyledCartModal>
       <CartHeader>
         <div className='heading'>
           <p>My Cart </p>
-          <span>(1 Item)</span>
+          <span>
+            ({totalQty} Item{totalQty > 1 ? 's' : ''})
+          </span>
         </div>
         <button
           type='button'
@@ -34,7 +43,7 @@ const CartModal = () => {
       </CartHeader>
       <CardBody>
         {items.map(item => (
-          <CartItem item={item} />
+          <CartItem key={item.id} item={item} />
         ))}
         <div className='min-banner'>
           <div className='banner-img'>
@@ -45,9 +54,9 @@ const CartModal = () => {
       </CardBody>
       <CardFooter>
         <p className='note'>Promo code can be applied on Payment Page</p>
-        <StyledButton>
+        <StyledButton onClick={() => dispatch(closeCart())}>
           <span>Proceed to Checkout</span>
-          <span>Rs.187 &gt;</span>
+          <span>{'Rs.' + getTotalAmt(items) + ' >'}</span>
         </StyledButton>
       </CardFooter>
     </StyledCartModal>

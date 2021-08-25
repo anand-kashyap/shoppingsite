@@ -41,7 +41,7 @@ const cartSlice = createSlice({
       const existingItemIndex = state.items.findIndex(
         prod => prod.id === prodId
       );
-      if (existingItemIndex) {
+      if (existingItemIndex !== -1) {
         state.totalQty--;
         state.items[existingItemIndex].qty--;
         state.items[existingItemIndex].qty < 1 &&

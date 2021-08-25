@@ -16,6 +16,7 @@ const StyledCartItem = styled.div`
   }
 
   .name {
+    flex-grow: 1;
     > p {
       font-weight: 600;
     }
