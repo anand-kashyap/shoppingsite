@@ -19,4 +19,8 @@ interface IProduct {
   id: string;
 }
 
-export type { ICategory, IProduct };
+interface ICartProduct extends IProduct {
+  qty: number;
+}
+
+export type { ICategory, IProduct, ICartProduct };

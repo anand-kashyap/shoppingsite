@@ -9,12 +9,14 @@
     "start:server": "canned -p 5000 ./server"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.6.1",
     "axios": "^0.21.1",
     "canned": "^0.3.13",
     "next": "latest",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-is": "^17.0.2",
+    "react-redux": "^7.2.4",
     "react-responsive-carousel": "^3.2.21",
     "styled-components": "^5.2.3"
   },

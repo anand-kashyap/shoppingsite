@@ -1,6 +1,8 @@
+import { store } from 'app/store';
 import Footer from 'components/Footer';
 import Header from 'components/Header';
 import { AppProps } from 'next/app';
+import { Provider } from 'react-redux';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
@@ -54,11 +56,13 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <GlobalStyle />
       <ThemeProvider theme={theme}>
-        <Header />
-        <main className='container'>
-          <Component {...pageProps} />
-        </main>
-        <Footer />
+        <Provider store={store}>
+          <Header />
+          <main className='container'>
+            <Component {...pageProps} />
+          </main>
+          <Footer />
+        </Provider>
       </ThemeProvider>
     </>
   );

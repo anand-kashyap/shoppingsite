@@ -2,7 +2,7 @@ import Link from 'next/link';
 import styled from 'styled-components';
 
 const StyledHeader = styled.header`
-  margin-top: 0.5rem;
+  padding-top: 0.5rem;
   display: grid;
   grid-template-columns: auto 1fr 0.2fr;
   align-content: center;
